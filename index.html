@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <script src="validation.js" defer></script>
+  <title>ISM SAWKI | Connexion</title>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Accueil ISM SAWKI">
+      <span class="brand-mark">I</span>
+      <span>ISM SAWKI</span>
+    </a>
+    <a class="help-link" href="registration.html">Créer un compte</a>
+  </header>
+
+  <main class="login-layout">
+    <section class="welcome-panel" aria-labelledby="welcome-title">
+      <p class="eyebrow">Transfert d'argent simple et sécurisé</p>
+      <h1 id="welcome-title">Votre argent, toujours à portée de main.</h1>
+      <p>Connectez-vous pour envoyer de l'argent, suivre vos transferts et gérer vos bénéficiaires en toute tranquillité.</p>
+      <div class="transfer-preview" aria-hidden="true">
+        <div class="preview-person"><span>MS</span><strong>Moi</strong></div>
+        <div class="transfer-line"><i></i><span>&rarr;</span><i></i></div>
+        <div class="preview-person"><span>AD</span><strong>Awa Diop</strong></div>
+      </div>
+    </section>
+
+    <section class="login-card" aria-labelledby="login-title">
+      <p class="card-kicker">Espace personnel</p>
+      <h2 id="login-title">Se connecter</h2>
+      <p class="card-intro">Accédez à votre compte ISM SAWKI.</p>
+      <form action="#" method="post">
+        <div class="form-group">
+          <label for="email">Adresse e-mail</label>
+          <input type="email" id="email" name="email" autocomplete="email" placeholder="vous@exemple.com" maxlength="254" required>
+        </div>
+        <div class="form-group">
+          <div class="password-label">
+            <label for="password">Mot de passe</label>
+          </div>
+          <input type="password" id="password" name="password" autocomplete="current-password" minlength="8" required>
+        </div>
+        <label class="remember"><input type="checkbox" name="remember"><span>Se souvenir de moi</span></label>
+        <button type="submit">Se connecter <span aria-hidden="true">&rarr;</span></button>
+         <a href="#mot-de-passe-oublie">Mot de passe oublié ?</a>
+      </form>
+      <p class="register">Vous n'avez pas encore de compte ? <a href="registration.html">S'inscrire</a></p>
+    </section>
+  </main>
+
+  <footer><span>&copy; 2026 ISM SAWKI</span><span>Vos transferts sont protégés.</span></footer>
+</body>
+</html>
