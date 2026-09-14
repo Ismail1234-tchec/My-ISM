@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de bord | ISM SAWKI</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <script src="validation.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="dashboard-shell">
+    <aside class="sidebar" aria-label="Navigation principale">
+      <a class="brand" href="dashboard.html"><span class="brand-mark">I</span><span>ISM SAWKI</span></a>
+      <nav class="sidebar-nav">
+        <a class="nav-item active" href="dashboard.html"><span aria-hidden="true">&#9632;</span> Tableau de bord</a>
+        <a class="nav-item" href="#transfer-form"><span aria-hidden="true">&#8599;</span> Envoyer de l'argent</a>
+        <a class="nav-item" href="#transactions"><span aria-hidden="true">&#9776;</span> Transactions</a>
+        <a class="nav-item" href="#beneficiaries"><span aria-hidden="true">&#9823;</span> Bénéficiaires</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <a class="nav-item" href="#help"><span aria-hidden="true">?</span> Centre d'aide</a>
+        <button class="logout-button" id="logout-button" type="button"><span aria-hidden="true">&#8594;</span> Se déconnecter</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="breadcrumb">Espace personnel / <strong>Vue d'ensemble</strong></p>
+          <h1>Bonjour, Moussa <span aria-hidden="true">&#9786;</span></h1>
+        </div>
+        <div class="profile-area">
+          <button class="notification-button" type="button" aria-label="Voir les notifications"><span aria-hidden="true">&#128276;</span><i></i></button>
+          <div class="profile-avatar" aria-hidden="true">MS</div>
+          <div class="profile-name"><strong>Moussa Sarr</strong><small>Compte personnel</small></div>
+        </div>
+      </header>
+
+      <section class="overview-grid" aria-label="Résumé du compte">
+        <article class="balance-card">
+          <div class="card-topline"><span>Solde disponible</span><button id="toggle-balance" class="icon-button" type="button" aria-label="Masquer le solde">&#128065;</button></div>
+          <p class="balance-amount" id="balance-amount">245 800 <span>FCFA</span></p>
+          <p class="balance-change"><span>&#8593; 12,5 %</span> depuis le mois dernier</p>
+          <div class="balance-footer"><span>Compte principal</span><span class="status-dot">● Actif</span></div>
+        </article>
+        <article class="metric-card"><span class="metric-icon coral">&#8599;</span><p>Envoyé ce mois</p><strong>182 500 <small>FCFA</small></strong><span class="metric-note">8 transferts réalisés</span></article>
+        <article class="metric-card"><span class="metric-icon gold">&#8595;</span><p>Reçu ce mois</p><strong>96 000 <small>FCFA</small></strong><span class="metric-note">5 transferts reçus</span></article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel transfer-panel" id="transfer-form">
+          <div class="panel-heading"><div><p class="section-kicker">Transfert rapide</p><h2>Envoyer de l'argent</h2></div><span class="secure-label">&#128274; Sécurisé</span></div>
+          <form id="transfer-form-element">
+            <p class="form-section-title">Informations de l'expéditeur</p>
+            <div class="form-row"><div class="field-group"><label for="sender-name">Nom complet</label><input id="sender-name" type="text" placeholder="Votre nom complet" minlength="2" maxlength="100" pattern="[A-Za-zÀ-ÿ' -]+" required></div><div class="field-group"><label for="sender-phone">Téléphone (+227)</label><input id="sender-phone" type="tel" inputmode="tel" placeholder="+227 90 00 00 00" pattern="\+227[ ]?[0-9]{2}[ ]?[0-9]{2}[ ]?[0-9]{2}[ ]?[0-9]{2}" title="Entrez un numéro nigérien au format +227 90 00 00 00" required></div></div>
+            <p class="form-section-title">Informations du destinataire</p>
+            <div class="field-group"><label for="beneficiary">Nom complet</label><input id="beneficiary" type="text" placeholder="Nom du destinataire" minlength="2" maxlength="100" pattern="[A-Za-zÀ-ÿ' -]+" required></div>
+            <div class="form-row"><div class="field-group"><label for="recipient-phone">Téléphone (+227)</label><input id="recipient-phone" type="tel" inputmode="tel" placeholder="+227 90 00 00 00" pattern="\+227[ ]?[0-9]{2}[ ]?[0-9]{2}[ ]?[0-9]{2}[ ]?[0-9]{2}" title="Entrez un numéro nigérien au format +227 90 00 00 00" required></div><div class="field-group"><label for="recipient-city">Ville</label><select id="recipient-city" required><option value="" selected disabled>Choisissez une ville</option><option value="NIAMEY">NIAMEY</option><option value="DOUTCHI">DOUTCHI</option><option value="WALWALA">WALWALA</option><option value="DOSSO">DOSSO</option><option value="TAHOUA">TAHOUA</option><option value="ZINDER">ZINDER</option><option value="AGADEZ">AGADEZ</option></select></div></div>
+            <div class="form-row"><div class="field-group"><label for="amount">Montant</label><div class="amount-input"><input id="amount" type="number" min="1" placeholder="0" required><span>FCFA</span></div></div><div class="field-group"><label for="reason">Motif</label><select id="reason" required><option value="" selected disabled>Choisissez un motif</option><option value="Envoi">Envoi</option><option value="Dépôt">Dépôt</option></select></div></div>
+            <fieldset class="fee-choice"><legend>Gestion des frais</legend><label><input type="radio" name="fee-mode" value="excluded" checked> Frais en supplément</label><label><input type="radio" name="fee-mode" value="included"> Frais inclus dans le montant</label></fieldset>
+            <div class="transfer-summary"><span>Frais de transfert</span><strong id="transfer-fee">0 FCFA</strong><span>Total à débiter</span><strong id="total-amount">0 FCFA</strong></div>
+            <button class="primary-button" type="submit">Continuer le transfert <span aria-hidden="true">&rarr;</span></button>
+          </form>
+        </article>
+
+        <article class="panel beneficiaries-panel" id="beneficiaries">
+          <div class="panel-heading"><div><p class="section-kicker">Contacts favoris</p><h2>Bénéficiaires</h2></div><button class="text-button" id="add-beneficiary" type="button">+ Ajouter</button></div>
+          <div class="beneficiary-list"><button class="beneficiary" type="button" data-name="Awa Diop"><span class="person-avatar pink">AD</span><span><strong>Awa Diop</strong><small>Orange Money</small></span><span class="more">&#8943;</span></button><button class="beneficiary" type="button" data-name="Fatou Ndiaye"><span class="person-avatar blue">FN</span><span><strong>Fatou Ndiaye</strong><small>Wave</small></span><span class="more">&#8943;</span></button><button class="beneficiary" type="button" data-name="Mamadou Fall"><span class="person-avatar yellow">MF</span><span><strong>Mamadou Fall</strong><small>Free Money</small></span><span class="more">&#8943;</span></button></div>
+        </article>
+      </section>
+
+      <section class="panel transactions-panel" id="transactions">
+        <div class="panel-heading"><div><p class="section-kicker">Activité récente</p><h2>Dernières transactions</h2></div><button class="text-button" id="view-all" type="button">Voir tout &rarr;</button></div>
+        <div class="transaction-list" id="transaction-list">
+          <div class="transaction"><span class="transaction-icon sent">&#8599;</span><span class="transaction-info"><strong>Envoi à Awa Diop</strong><small>Aujourd'hui, 10:42</small></span><strong class="negative">- 25 000 FCFA</strong><span class="complete">Terminé</span></div>
+          <div class="transaction"><span class="transaction-icon received">&#8595;</span><span class="transaction-info"><strong>Reçu de Cheikh Ba</strong><small>Hier, 16:08</small></span><strong class="positive">+ 50 000 FCFA</strong><span class="complete">Terminé</span></div>
+          <div class="transaction"><span class="transaction-icon sent">&#8599;</span><span class="transaction-info"><strong>Envoi à Fatou Ndiaye</strong><small>12 juin 2026, 09:20</small></span><strong class="negative">- 15 000 FCFA</strong><span class="complete">Terminé</span></div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

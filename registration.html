@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Créer un compte</title>
+  <link rel="stylesheet" href="registration.css">
+  <script src="validation.js" defer></script>
+  <script src="registration.js" defer></script>
+</head>
+<body>
+  <main class="page-wrapper">
+    <section class="registration-card" aria-labelledby="registration-title">
+      <div class="form-heading">
+        <p class="eyebrow">Bienvenue</p>
+        <h1 id="registration-title">Créer un compte</h1>
+        <p class="intro">Rejoignez-nous aujourd'hui. Cela ne prend qu'une minute pour commencer.</p>
+      </div>
+
+      <form id="registration-form" action="#" method="post">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first-name">Entrer votre prénom</label>
+            <input type="text" id="first-name" name="first_name" autocomplete="given-name" minlength="2" maxlength="60" pattern="[A-Za-zÀ-ÿ' -]+" required>
+          </div>
+          <div class="form-group">
+            <label for="last-name">Entrer votre nom </label>
+            <input type="text" id="last-name" name="last_name" autocomplete="family-name" minlength="2" maxlength="60" pattern="[A-Za-zÀ-ÿ' -]+" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Adresse e-mail</label>
+          <input type="email" id="email" name="email" autocomplete="email" maxlength="254" required>
+        </div>
+
+        <fieldset class="account-type">
+          <legend>Type de compte</legend>
+          <label class="account-option">
+            <input type="radio" name="role" value="principal" checked>
+            <span><strong>Compte principal</strong><small>Pour gérer votre compte et vos opérations.</small></span>
+          </label>
+          <label class="account-option">
+            <input type="radio" name="role" value="agent">
+            <span><strong>Compte agent</strong><small>Pour effectuer les opérations autorisées.</small></span>
+          </label>
+        </fieldset>
+
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" name="password" minlength="8" autocomplete="new-password" required>
+          <small>Utilisez au moins 8 caractères.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="confirm-password">Confirmer le mot de passe</label>
+          <input type="password" id="confirm-password" name="confirm_password" minlength="8" autocomplete="new-password" required>
+        </div>
+
+        <label class="terms">
+          <input type="checkbox" name="terms" required>
+          <span>Je suis d'accord avec les <a href="#terms">conditions générales</a>.</span>
+        </label>
+
+        <button type="submit">Créer un compte</button>
+        <p id="registration-status" class="registration-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <p class="sign-in">Vous avez déjà un compte ? <a href="index.html">Se connecter</a></p>
+    </section>
+  </main>
+</body>
+</html>
