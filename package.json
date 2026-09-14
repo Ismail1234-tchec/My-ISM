@@ -1,0 +1,23 @@
+{
+  "name": "ism-sawki-backend",
+  "version": "1.0.0",
+  "description": "Backend du service de transfert d'argent ISM SAWKI",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mysql2": "^3.11.5"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "check": "node --check index.js && node --check server.js && node --check auth.js && node --check users.js",
+    "test": "node ../Testing/run-tests.js"
+  },
+  "keywords": [
+    "transfert",
+    "argent",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC"
+}
